@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "categories",
+  "info": {
+    "singularName": "categorie",
+    "pluralName": "categories",
+    "displayName": "Categorii"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "slug_ro": {
+      "type": "string"
+    },
+    "slug_en": {
+      "type": "string"
+    },
+    "name_en": {
+      "type": "string"
+    },
+    "name_ro": {
+      "type": "string"
+    },
+    "produses": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::produs.produs"
+    }
+  }
+}

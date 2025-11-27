@@ -1,0 +1,44 @@
+// WARNING :
+// for unknown reasons this javascript file was minified and pushed in git repository,
+// that's why, for example, you can see variable named with only a letter 
+// Advise is to progressively remove part of this javascript and rewrite it properly in other JS files, then delete it
+
+var loadGoogleMaps = (function() {
+    var e = !1;
+    return function(t) {
+        var n = this;
+        if (e) "function" == typeof t && t.call(n);
+        else {
+            var o = SitePreferences.GoogleMapsUrl,
+                r = SitePreferences.GoogleMapsApiKey;
+            if (!o || !r) return;
+            var a = document.createElement("script");
+            (a.type = "text/javascript"),
+            (a.src = o + "key=" + r + "&callback=initMap"),
+            (a.onload = function() {
+                "function" == typeof t && t.call(n);
+            }),
+            document.body.appendChild(a),
+                (e = !0);
+        }
+    };
+})();
+
+function appendParamToURL(e, t, n) {
+    return -1 !== e.indexOf(t + "=") ? e : e + (-1 !== e.indexOf("?") ? "&" : "?") + t + "=" + encodeURIComponent(n);
+}
+
+var loadStoreLayer = !0;
+document.addEventListener("DOMContentLoaded", function() {
+    $("#header-item-storelocator").hover(function(event) {
+        event.preventDefault(),
+        loadStoreLayer &&
+        ((loadStoreLayer = !1),
+            $.ajax({
+                url: appendParamToURL(Urls.getStorelocatorHeaderItem, "hideHeader", !0),
+                success: function(e) {
+                    loadGoogleMaps(), e && $(".header-layer-content.store-content").replaceWith(e);
+                },
+            }));
+    });
+});

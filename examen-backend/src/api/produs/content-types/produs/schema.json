@@ -35,8 +35,9 @@
     },
     "categorii": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::categorie.categorie"
+      "relation": "manyToOne",
+      "target": "api::categorie.categorie",
+      "inversedBy": "produses"
     },
     "brand": {
       "type": "string"

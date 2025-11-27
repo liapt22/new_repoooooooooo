@@ -475,7 +475,7 @@ export interface ApiProdusProdus extends Struct.CollectionTypeSchema {
   attributes: {
     brand: Schema.Attribute.String;
     categorii: Schema.Attribute.Relation<
-      'oneToOne',
+      'manyToOne',
       'api::categorie.categorie'
     >;
     createdAt: Schema.Attribute.DateTime;

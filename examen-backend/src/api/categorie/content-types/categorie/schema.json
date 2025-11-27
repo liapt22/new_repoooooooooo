@@ -26,7 +26,8 @@
     "produses": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::produs.produs"
+      "target": "api::produs.produs",
+      "mappedBy": "categorii"
     }
   }
 }
